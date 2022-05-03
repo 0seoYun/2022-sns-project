@@ -19,10 +19,12 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.showmain),
-]
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views.introduction),
+    path('', views.showmain, name="showmain")
+
+    path('introduction/', views.introduction)
+
+    path('firstpage/', views.showfirst, name="showfirst")
+
+    path('secondpage/', views.showsecond, name="showsecond")
 ]

@@ -6,3 +6,9 @@ def showmain(request):
 
 def introduction(request):
     return render(request, 'main/show.html')
+
+def introducton(request):
+    return render(request, 'main/firstpage.html')
+
+def introducton(request):
+    return render(request, 'main/secondpage.html')
