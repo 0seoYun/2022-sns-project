@@ -20,11 +20,17 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.showmain, name="showmain")
+    path('', views.showmain, name="showmain"),
 
-    path('introduction/', views.introduction)
+    path('introduction/', views.introduction, name='introduction'),
 
-    path('firstpage/', views.showfirst, name="showfirst")
+    path('firstpage/', views.showfirst, name="showfirst"),
 
-    path('secondpage/', views.showsecond, name="showsecond")
+    path('secondpage/', views.showsecond, name="showsecond"),
+
+    path('<str:id>',views.detail, name="detail"),
+
+    path('new/',views.new, name="new"),
+
+    path('create/',views.create, name="create"),
 ]
