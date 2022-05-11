@@ -5,25 +5,25 @@
     <h1>2022 Dongguk LikeLion 10th SNS</h1>
 
     <img src = "dgu_likelion.png" alt ="logo">
-    
-    <a href="{% url 'showfirst' %}">FIRST PAGE</a>
-    <a href="{% url 'showsecond' %}">SECOND PAGE</a>
-    <a href="{% url 'introduction' %}">About 10th Youngseo</a>
 
-    <h2><a href="{%url 'new'%}">글쓰기</a></h2>
+    <a href="{% url 'showfirst' %}">1st PAGE</a>
+    <a href="{% url 'showsecond' %}">2nd PAGE</a>
+    <a href="{% url 'introduction' %}">About 10th Youngseo</a>
 
     <h1>글 목록</h1>
     <div>
         {% for post in posts %}
         <div>
+            <br>
             <h3>{{post.title}}</h3>
             {{post.writer}}<br>
             {{post.summary}}
             <a href="{%url 'detail' post.id %}">...more</a>
-            <br>
         </div>
         {%endfor%}
     </div>
+
+    <h1><a href="{%url 'new'%}">글쓰기</a></h1>
 
     <h2>About LikeLion</h2>
     <h3>Hack Your Life, 프로그래밍으로 당신의 인생을 바꿔보세요.</h3>
