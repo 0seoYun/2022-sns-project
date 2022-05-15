@@ -4,14 +4,14 @@
 
     <h1>2022 Dongguk LikeLion 10th SNS</h1>
 
-    <a href="{% url 'showfirst' %}">1st PAGE</a>
-    <a href="{% url 'showsecond' %}">2nd PAGE</a>
-    <a href="{% url 'introduction' %}">About 10th Youngseo</a>
+    <a href="{% url 'main:showfirst' %}">1st PAGE</a>
+    <a href="{% url 'main:showsecond' %}">2nd PAGE</a>
+    <a href="{% url 'main:introduction' %}">About 10th Youngseo</a>
     <br>
     <img src = "{% static 'image/dgu_likelion.png' %}" alt ="logo" width = "400">
 
     <h1>글 목록</h1>
-    <h2><a href="{%url 'new'%}">글쓰기</a></h2>
+    <h2><a href="{%url 'main:new' %}">글쓰기</a></h2>
     <div>
         {% for post in posts %}
         <div>
@@ -19,7 +19,7 @@
             <h3>{{post.title}}</h3>
             {{post.writer}}<br>
             {{post.summary}}
-            <a href="{%url 'detail' post.id %}">...more</a>
+            <a href="{%url 'main:detail' post.id %}">...more</a>
         </div>
         {%endfor%}
     </div>
