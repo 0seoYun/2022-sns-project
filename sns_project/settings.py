@@ -57,7 +57,7 @@ ROOT_URLCONF = 'sns_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'basic', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'sns_project', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,7 +121,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'basic', 'static')
+    os.path.join(BASE_DIR, 'sns_project', 'static')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
