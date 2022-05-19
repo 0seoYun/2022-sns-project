@@ -10,6 +10,8 @@
     <br>
     <img src = "{% static 'image/dgu_likelion.png' %}" alt ="logo" width = "400">
 
+{% if user.is_authenticated %}
+
     <h1>글 목록</h1>
     <h2><a href="{%url 'main:new' %}">글쓰기</a></h2>
     <div>
@@ -23,7 +25,12 @@
         </div>
         {%endfor%}
     </div>
+{% else %}
 
+<a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
+<a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
+
+{% endif %}
 
     <h2>About LikeLion</h2>
     <h3>Hack Your Life, 프로그래밍으로 당신의 인생을 바꿔보세요.</h3>

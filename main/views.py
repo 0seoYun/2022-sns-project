@@ -26,7 +26,7 @@ def new(request):
 def create(request):
     new_post = Post()
     new_post.title = request.POST['title']
-    new_post.writer = request.POST['writer']
+    new_post.writer = request.user
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
     new_post.image = request.FILES.get('image')
@@ -37,10 +37,10 @@ def edit(request,id):
     edit_post = Post.objects.get(id = id)
     return render(request, 'main/edit.html', {'post' : edit_post})
 
-def update(request):
+def update(request,id):
     update_post = Post.objects.get(id = id)
     update_post.title = request.POST['title']
-    update_post.writer = request.POST['writer']
+    update_post.writer = request.user
     update_post.pub_date = timezone.now()
     update_post.body = request.POST['body']
     update_post.image = request.FILES.get('image')
