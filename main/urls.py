@@ -7,6 +7,8 @@ urlpatterns = [
 
     path('introduction/', introduction, name='introduction'),
 
+    path('picture/', picture, name="picture"),
+
     path('firstpage/', showfirst, name="showfirst"),
 
     path('secondpage/', showsecond, name="showsecond"),

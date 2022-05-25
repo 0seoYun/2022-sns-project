@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Post
 from django.utils import timezone
@@ -9,6 +10,9 @@ def showmain(request):
 
 def introduction(request):
     return render(request, 'main/show.html')
+
+def picture(request):
+    return render(request, 'main/picture.html')
 
 def showfirst(request):
     return render(request, 'main/firstpage.html')
