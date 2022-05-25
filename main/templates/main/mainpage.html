@@ -4,9 +4,10 @@
 
     <h1>2022 Dongguk LikeLion 10th SNS</h1>
 
-    <a href="{% url 'main:showfirst' %}">1st PAGE</a>
-    <a href="{% url 'main:showsecond' %}">2nd PAGE</a>
-    <a href="{% url 'main:introduction' %}">About Me</a>
+    <a class="btn btn-dark" href="{% url 'main:showfirst' %}" role="button">1st Page</a>
+    <a class="btn btn-dark" href="{% url 'main:showsecond' %}" role="button">2nd Page</a>
+    <a class="btn btn-dark" href="{% url 'main:introduction' %}" role="button">About Me</a>
+
     <br>
     <img src = "{% static 'image/dgu_likelion.png' %}" alt ="logo" width = "400">
 
