@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post
+from .models import Post, Comment
 from django.utils import timezone
 
 # Create your views here.
@@ -20,9 +20,11 @@ def showfirst(request):
 def showsecond(request):
     return render(request, 'main/secondpage.html')
 
-def detail(request,id):
+def detail(request, id):
     post = get_object_or_404(Post, pk = id)
-    return render(request,'main/detail.html',{'post':post})
+    all_comments = post.comments.all().order_by('-created_at')
+    return render(request, 'main/detail.html', {'post':post, 'comments':all_comments})
+
 
 def new(request):
     return render(request, 'main/new.html')
@@ -56,3 +58,10 @@ def delete(request,id):
     delete_post.delete()
     return redirect('main:showmain')
 
+def create_comment(request, post_id):
+    new_comment = Comment()
+    new_comment.writer = request.user
+    new_comment.content = request.POST['content']
+    new_comment.post = get_object_or_404(Post, pk = post_id)
+    new_comment.save() 
+    return redirect('main:detail', post_id)
