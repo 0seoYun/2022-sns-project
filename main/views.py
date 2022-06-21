@@ -25,7 +25,6 @@ def detail(request, id):
     all_comments = post.comments.all().order_by('-created_at')
     return render(request, 'main/detail.html', {'post':post, 'comments':all_comments})
 
-
 def new(request):
     return render(request, 'main/new.html')
 
@@ -65,3 +64,20 @@ def create_comment(request, post_id):
     new_comment.post = get_object_or_404(Post, pk = post_id)
     new_comment.save() 
     return redirect('main:detail', post_id)
+
+def update_comment(request, id):
+    update_comment = Comment.objects.get(id = id)
+    update_comment.writer = request.user
+    update_comment.content = request.POST['content']
+    update_comment.post = get_object_or_404(Post, pk=id)
+    update_comment.save() 
+    return redirect('main:detail', update_comment.id)
+
+def delete_comment(request, id):
+    delete_comment = Comment.objects.get(id=id)
+    delete_comment.delete()
+    return redirect('main:showmain')
+
+def edit_comment(request, id):
+    edit_comment = Comment.objects.get(id=id)
+    return render(request,'main/comment_edit.html', {'comment' : edit_comment})
