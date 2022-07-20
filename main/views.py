@@ -68,7 +68,7 @@ def create_comment(request, post_id):
 def update_comment(request, id):
     update_comment = Comment.objects.get(id = id)
     update_comment.writer = request.user
-    update_comment.content = request.POST['content']
+    update_comment.content = request.POST.get('content')
     update_comment.post = get_object_or_404(Post, pk=id)
     update_comment.save() 
     return redirect('main:detail', update_comment.id)
