@@ -105,6 +105,23 @@ def like_toggle(request, post_id):
     }
     return HttpResponse(json.dumps(context),content_type="application/json")
 
+@require_POST
+@login_required
+def dislike_toggle(request, post_id):
+    post=get_object_or_404(Post, pk=post_id)
+    post_dislike, post_dislike_created=Dislike.objects.get_or_create(user=request.user,post=post)
+
+    if not post_dislike_created:
+        post_dislike.delete()
+        result="dislike_cancel"
+    else:
+        result="dislike"
+    context={
+        "dislike_count" : post.dislike_count,
+        "result" : result
+    }
+    return HttpResponse(json.dumps(context),content_type="application/json")
+
 
 # my_like 함수 작성하기
 def my_like(request, user_id):
@@ -114,3 +131,11 @@ def my_like(request, user_id):
         'like_list' : like_list,
     }
     return render(request, 'main/my_like.html', context)
+
+def my_dislike(request, user_id):
+    user = User.objects.get(id = user_id)
+    dislike_list = Dislike.objects.filter(user = user)
+    context = {
+        'dislike_list' : dislike_list,
+    }
+    return render(request, 'main/my_dislike.html', context)
