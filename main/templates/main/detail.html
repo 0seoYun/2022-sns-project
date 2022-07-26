@@ -57,7 +57,7 @@
         <div class="alt-service-icon">
             <i class="far fa-heart" id="like-icon" style="color:red;"></i>
         </div>
-    {% end if %}
+    {% endif %}
 
     <span id="count-{{ post.id }}" class="alt-services-title font alt">
         좋아요
@@ -79,7 +79,7 @@
         <div class="alt-service-icon">
             <i class="fa-light fa-heart-crack" id="dislike-icon" style="color:red;"></i>
         </div>
-    {% end if %}
+    {% endif %}
 
     <span id="count-{{ post.id }}" class="alt-services-title font alt">
         싫어요
@@ -98,7 +98,7 @@
         var pk=$(this).attr('name')
         $.ajax({
             type:'POST',
-            url:"{% url 'items:like_toggle' post.pk %}",
+            url:"{% url 'main:like_toggle' post.pk %}",
             data:{'pk':pk,'csrfmiddlewaretoken':'{{csrf_token}}'},
             dataType:'json',
             success:function(response){
@@ -133,7 +133,7 @@
         var pk=$(this).attr('name')
         $.ajax({
             type:'POST',
-            url:"{% url 'items:dislike_toggle' post.pk %}",
+            url:"{% url 'main:dislike_toggle' post.pk %}",
             data:{'pk':pk,'csrfmiddlewaretoken':'{{csrf_token}}'},
             dataType:'json',
             success:function(response){
